@@ -1,254 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DirhamWise · Financial Literacy for UAE Teens</title>
-  <link rel="stylesheet" href="dirhamwise-theme.css">
-  <style>
-    .hero {
-      text-align: center;
-      padding: 4rem 2rem 3rem;
-      position: relative;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DirhamWise · Budget Tools</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="../dirhamwise-theme.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="dw-page-bg">
+    <header class="dw-header">
+      <nav class="dw-nav">
+        <a href="../index.html" class="logo">
+          <div class="logo-icon">د</div>
+          <div class="logo-text">dirham<span>wise</span></div>
+        </a>
+        <ul class="dw-nav-links">
+          <li><a href="../index.html">🏠 Hub</a></li>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#planner">💰 Planner</a></li>
+          <li><a href="#goals">🎯 Goals</a></li>
+          <li><a href="#insights">📊 Insights</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 300px;
-      background: var(--gradient-mesh);
-      filter: blur(60px);
-      z-index: -1;
-    }
+    <main class="dw-container">
+      <section class="hero reveal" id="home">
+        <div class="hero-badge">💰 Budget Tools</div>
+        <h1>Own your future,<br><span>one dirham at a time</span></h1>
+        <p class="lead">
+          Track your spending, hit up to 5 custom goals, and see exactly where your cash goes with live pie charts. Budgeting just got a serious upgrade.
+        </p>
+        <div class="actions">
+          <a class="btn-primary" href="#planner">Start Planner</a>
+          <a class="btn-secondary" href="#insights">View Insights</a>
+        </div>
+      </section>
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--gradient-gold);
-      color: var(--dark);
-      padding: 0.6rem 1.4rem;
-      border-radius: var(--radius-full);
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-      box-shadow: var(--shadow-md);
-    }
+      <section class="section section-block reveal" id="planner">
+        <h2 class="section-title">💰 Planner</h2>
+        <p class="section-sub">Set your monthly budget in AED and log your spending categories for live insights.</p>
+        <div class="stack">
+          <article class="chart-box">
+            <h3>Budget setup</h3>
+            <div class="input-grid">
+              <label>Monthly budget (AED)<input id="monthBudget" type="number" value="600" min="0" /></label>
+              <label>Needs (AED)<input id="needSpend" type="number" value="250" min="0" /></label>
+              <label>Wants (AED)<input id="wantSpend" type="number" value="180" min="0" /></label>
+              <label>Savings (AED)<input id="saveSpend" type="number" value="120" min="0" /></label>
+            </div>
+            <div class="stat-row">
+              <div class="stat"><small>Needs</small><strong data-stat="needs">AED 0</strong></div>
+              <div class="stat"><small>Wants</small><strong data-stat="wants">AED 0</strong></div>
+              <div class="stat"><small>Savings</small><strong data-stat="save">AED 0</strong></div>
+            </div>
+            <div class="metric"><span>Remaining</span><strong data-stat="left">AED 0</strong></div>
+          </article>
+          <article class="chart-box">
+            <h3>Expense entries</h3>
+            <div class="input-grid expense-row">
+              <label>Expense name<input id="expenseName" type="text" placeholder="Bus card top-up" /></label>
+              <label>Category<input id="expenseCategory" type="text" placeholder="Transport" /></label>
+              <label>Amount (AED)<input id="expenseAmount" type="number" min="1" value="20" /></label>
+              <button class="btn-primary small" id="addExpenseBtn" type="button">Add Expense</button>
+            </div>
+            <div class="card-list" id="expenseList"></div>
+          </article>
+        </div>
+      </section>
 
-    .hero h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-    }
+      <section class="section section-block reveal" id="goals">
+        <h2 class="section-title">🎯 Goals</h2>
+        <p class="section-sub">Create up to 5 goals. Every goal has its own progress bar and timeline.</p>
+        <article class="chart-box">
+          <div class="goal-entry">
+            <label>Goal name<input id="goalName" type="text" placeholder="New headphones" /></label>
+            <label>Target (AED)<input id="goalAmount" type="number" min="1" value="350" /></label>
+            <label>Saved (AED)<input id="goalSaved" type="number" min="0" value="80" /></label>
+            <label>Weekly save (AED)<input id="goalWeekly" type="number" min="1" value="25" /></label>
+            <button class="btn-primary small" id="addGoalBtn" type="button">Add Goal</button>
+          </div>
+          <div class="goal-list" id="goalList"></div>
+        </article>
+      </section>
 
-    .hero h1 span {
-      background: linear-gradient(135deg, var(--primary), var(--accent-purple));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+      <section class="section section-block reveal" id="insights">
+        <h2 class="section-title">📊 Insights</h2>
+        <p class="section-sub">
+          Add filters with names and amounts, turn them on or off for the chart, edit values anytime, or delete them. The pie chart reflects your active filters only.
+        </p>
+        <div class="stack">
+          <article class="chart-box">
+            <h3>Custom filters</h3>
+            <div class="filter-list" id="filterList"></div>
+            <div class="goal-entry filter-add-row">
+              <label>Filter name<input id="newFilterInput" type="text" placeholder="Category name" /></label>
+              <label>Amount (AED)<input id="newFilterAmount" type="number" min="0" value="0" /></label>
+              <button class="btn-primary small" id="addFilterBtn" type="button">Add Filter</button>
+            </div>
+            <div class="metric"><span>Chart total (active filters)</span><strong id="filteredTotal">AED 0</strong></div>
+          </article>
+          <article class="chart-box">
+            <h3>Spending pie chart</h3>
+            <svg class="pie-chart" id="pieChart" viewBox="0 0 240 240" aria-label="Functional spending pie chart"></svg>
+            <div class="pie-legend" id="pieLegend"></div>
+          </article>
+        </div>
+      </section>
 
-    .hero p {
-      font-size: 1.2rem;
-      color: var(--dark-light);
-      max-width: 600px;
-      margin: 0 auto 2rem;
-    }
+      <section class="section section-block reveal">
+        <h2 class="section-title">How DirhamWise Helps</h2>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-emoji">📋</div>
+            <h3>Planner + Goals + Insights</h3>
+            <p>Everything updates in one interface, so your budgeting decisions and tracking stay connected.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-emoji">✅</div>
+            <h3>Student-friendly</h3>
+            <p>A functional, math-free experience designed to get you set up and tracking in seconds.</p>
+          </article>
+        </div>
+      </section>
+    </main>
 
-    .section-header {
-      text-align: center;
-      margin: 3rem 0 2rem;
-    }
-
-    .section-header h2 {
-      font-size: 2.2rem;
-      font-weight: 800;
-    }
-
-    .section-header h2 span {
-      background: linear-gradient(135deg, var(--secondary), var(--accent-pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .section-header p {
-      color: var(--dark-light);
-      margin-top: 0.5rem;
-    }
-
-    .sites-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .site-card {
-      background: white;
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--neutral-gray);
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .site-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: var(--gradient-primary);
-    }
-
-    .site-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-lg);
-      border-color: rgba(0, 102, 204, 0.2);
-    }
-
-    .site-card .emoji {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .site-card h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .site-card p {
-      color: var(--dark-light);
-      font-size: 0.95rem;
-      flex: 1;
-      margin-bottom: 1.5rem;
-    }
-
-    .site-card .card-cta {
-      background: var(--gradient-gold);
-      color: var(--dark);
-      padding: 0.5rem 1.2rem;
-      border-radius: var(--radius-full);
-      font-weight: 700;
-      font-size: 0.9rem;
-      display: inline-block;
-      align-self: flex-start;
-    }
-
-    .stats-row {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .stat-pill {
-      background: white;
-      padding: 0.8rem 1.5rem;
-      border-radius: var(--radius-full);
-      font-weight: 600;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      border: 1px solid var(--neutral-gray);
-    }
-
-    .stat-pill .number {
-      color: var(--primary);
-      font-weight: 800;
-    }
-  </style>
-</head>
-<body class="dw-page-bg">
-  <header class="dw-header">
-    <nav class="dw-nav">
-      <a href="index.html" class="logo">
-        <div class="logo-icon">د</div>
-        <div class="logo-text">dirham<span>wise</span></div>
-      </a>
-      <ul class="dw-nav-links">
-        <li><a href="index.html" class="active">🏠 Home</a></li>
-        <li><a href="Game - KRISHA/index.html">🎮 Game</a></li>
-        <li><a href="Tools - VIHAAN/index.html">💰 Tools</a></li>
-        <li><a href="Info - MAURYAN/index.html">📚 Learn</a></li>
-        <li><a href="Chatbot - ANDRIJA/budgeting.html">📝 Budgeting</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="dw-container">
-    <section class="hero">
-      <div class="hero-badge">🇦🇪 Built for UAE Teens</div>
-      <h1>Welcome to<br><span>DirhamWise</span></h1>
-      <p>Your all-in-one financial literacy hub. Play games, plan budgets, take quizzes, and learn money skills — all in dirhams.</p>
-      <div class="stats-row">
-        <div class="stat-pill"><span>🪙</span> <span class="number">4</span> modules</div>
-        <div class="stat-pill"><span>🎯</span> 100% free</div>
-        <div class="stat-pill"><span>🔒</span> No sign-up</div>
+    <footer class="dw-footer">
+      <div class="dw-footer-content">
+        <a href="../index.html" class="logo" style="justify-content: center;">
+          <div class="logo-icon">د</div>
+          <div class="logo-text">dirham<span>wise</span></div>
+        </a>
+        <p>© 2025 DirhamWise · Financial confidence for UAE teens</p>
       </div>
-    </section>
+    </footer>
 
-    <div class="section-header">
-      <h2>Explore · Learn · <span>Win</span></h2>
-      <p>Pick a module below to get started</p>
-    </div>
-
-    <div class="sites-grid">
-      <a href="Game - KRISHA/index.html" class="site-card">
-        <div class="emoji">🎮</div>
-        <h3>Money Game</h3>
-        <p>Level up your money skills with XP, challenges, savings streaks, and UAE-themed quests. Turn budgeting into a game.</p>
-        <span class="card-cta">Start Playing →</span>
-      </a>
-
-      <a href="Tools - VIHAAN/index.html" class="site-card">
-        <div class="emoji">💰</div>
-        <h3>Budget Tools</h3>
-        <p>Track spending, set up to 5 savings goals, and visualize where your cash goes with live pie charts and planners.</p>
-        <span class="card-cta">Open Planner →</span>
-      </a>
-
-      <a href="Info - MAURYAN/index.html" class="site-card">
-        <div class="emoji">📚</div>
-        <h3>Learn & Quiz</h3>
-        <p>Test your money IQ with interactive quizzes, explore savings graphs, and learn key financial concepts.</p>
-        <span class="card-cta">Take the Quiz →</span>
-      </a>
-
-      <a href="Chatbot - ANDRIJA/budgeting.html" class="site-card">
-        <div class="emoji">📝</div>
-        <h3>Budgeting Guide</h3>
-        <p>Master the 50/30/20 and 70/10/10/10 rules with AI-powered feedback. Learn how adults split their money.</p>
-        <span class="card-cta">Learn Budgeting →</span>
-      </a>
-    </div>
-  </main>
-
-  <footer class="dw-footer">
-    <div class="dw-footer-content">
-      <a href="index.html" class="logo" style="justify-content: center;">
-        <div class="logo-icon">د</div>
-        <div class="logo-text">dirham<span>wise</span></div>
-      </a>
-      <p>© 2025 DirhamWise · Financial confidence for UAE teens</p>
-      <p style="font-size: 0.85rem; margin-top: 0.5rem;">🔒 Your data stays on your device · No sign-up needed</p>
-    </div>
-  </footer>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
