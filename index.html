@@ -3,252 +3,348 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DirhamWise · Financial Literacy for UAE Teens</title>
-  <link rel="stylesheet" href="dirhamwise-theme.css">
-  <style>
-    .hero {
-      text-align: center;
-      padding: 4rem 2rem 3rem;
-      position: relative;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 300px;
-      background: var(--gradient-mesh);
-      filter: blur(60px);
-      z-index: -1;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--gradient-gold);
-      color: var(--dark);
-      padding: 0.6rem 1.4rem;
-      border-radius: var(--radius-full);
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-      box-shadow: var(--shadow-md);
-    }
-
-    .hero h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-    }
-
-    .hero h1 span {
-      background: linear-gradient(135deg, var(--primary), var(--accent-purple));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      color: var(--dark-light);
-      max-width: 600px;
-      margin: 0 auto 2rem;
-    }
-
-    .section-header {
-      text-align: center;
-      margin: 3rem 0 2rem;
-    }
-
-    .section-header h2 {
-      font-size: 2.2rem;
-      font-weight: 800;
-    }
-
-    .section-header h2 span {
-      background: linear-gradient(135deg, var(--secondary), var(--accent-pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .section-header p {
-      color: var(--dark-light);
-      margin-top: 0.5rem;
-    }
-
-    .sites-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .site-card {
-      background: white;
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--neutral-gray);
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .site-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: var(--gradient-primary);
-    }
-
-    .site-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-lg);
-      border-color: rgba(0, 102, 204, 0.2);
-    }
-
-    .site-card .emoji {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .site-card h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .site-card p {
-      color: var(--dark-light);
-      font-size: 0.95rem;
-      flex: 1;
-      margin-bottom: 1.5rem;
-    }
-
-    .site-card .card-cta {
-      background: var(--gradient-gold);
-      color: var(--dark);
-      padding: 0.5rem 1.2rem;
-      border-radius: var(--radius-full);
-      font-weight: 700;
-      font-size: 0.9rem;
-      display: inline-block;
-      align-self: flex-start;
-    }
-
-    .stats-row {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .stat-pill {
-      background: white;
-      padding: 0.8rem 1.5rem;
-      border-radius: var(--radius-full);
-      font-weight: 600;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      border: 1px solid var(--neutral-gray);
-    }
-
-    .stat-pill .number {
-      color: var(--primary);
-      font-weight: 800;
-    }
-  </style>
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <title>DirhamWise · Learn & Quiz</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body class="dw-page-bg">
   <header class="dw-header">
     <nav class="dw-nav">
-      <a href="index.html" class="logo">
+      <a href="../index.html" class="logo">
         <div class="logo-icon">د</div>
         <div class="logo-text">dirham<span>wise</span></div>
       </a>
       <ul class="dw-nav-links">
-        <li><a href="index.html" class="active">🏠 Home</a></li>
-        <li><a href="MoneyGame_Krisha/index.html">🎮 Game</a></li>
-        <li><a href="BudgetTools_Vihaan/index.html">💰 Tools</a></li>
-        <li><a href="Learn&Quiz_Mauryan/index.html">📚 Learn</a></li>
-        <li><a href="BudgetingGuide_Andrija/budgeting.html">📝 Budgeting</a></li>
+        <li><a href="../index.html">🏠 Hub</a></li>
+        <li><a href="#" onclick="showPage('quiz'); return false;">📝 Quiz</a></li>
+        <li><a href="#" onclick="showPage('graph'); return false;">📊 Graph</a></li>
+        <li><a href="#" onclick="showPage('info'); return false;">📚 Info</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="dw-container">
-    <section class="hero">
-      <div class="hero-badge">🇦🇪 Built for UAE Teens</div>
-      <h1>Welcome to<br><span>DirhamWise</span></h1>
-      <p>Your all-in-one financial literacy hub. Play games, plan budgets, take quizzes, and learn money skills — all in dirhams.</p>
-      <div class="stats-row">
-        <div class="stat-pill"><span>🪙</span> <span class="number">4</span> modules</div>
-        <div class="stat-pill"><span>🎯</span> 100% free</div>
-        <div class="stat-pill"><span>🔒</span> No sign-up</div>
+  <div class="app-shell">
+    <section class="app-header">
+      <div class="top-row">
+        <div>
+          <h1>📚 Learn & Quiz</h1>
+          <p class="subtitle">DirhamWise · Teen Edition</p>
+        </div>
+        <div class="pill"><strong>🎯 Beginner</strong></div>
       </div>
+      <p class="subtitle">Build financial strength with practical lessons and clear money ideas.</p>
     </section>
 
-    <div class="section-header">
-      <h2>Explore · Learn · <span>Win</span></h2>
-      <p>Pick a module below to get started</p>
+    <section class="tabs">
+      <div class="tab" data-page="info" onclick="showPage('info')">📚 Info</div>
+      <div class="tab" data-page="graph" onclick="showPage('graph')">📊 Graph</div>
+      <div class="tab active" data-page="quiz" onclick="showPage('quiz')">📝 Quiz</div>
+    </section>
+
+    <div class="content">
+      <section id="quiz" class="page active">
+        <div class="card focus-cards">
+          <div class="focus-card">
+            <strong>💡 Reminder</strong>
+            <span>Set aside at least 10% of any money you receive this week.</span>
+          </div>
+          <div class="focus-card">
+            <strong>✨ Tip</strong>
+            <span>Compare prices online before buying anything new.</span>
+          </div>
+          <div class="focus-card">
+            <strong>🔥 Challenge</strong>
+            <span>Track every purchase for 7 days and review what you learned.</span>
+          </div>
+        </div>
+
+        <div class="card quick-card">
+          <div class="quick-header">
+            <div>
+              <h2>📝 Quiz</h2>
+              <p id="quizInstruction">Answer the questions to improve your money IQ. Your progress is saved in cookies.</p>
+            </div>
+            <button class="small-button" onclick="restartQuiz()">Restart</button>
+          </div>
+
+          <div class="quiz-progress">
+            <div class="fill" id="quizProgressFill"></div>
+          </div>
+
+          <div class="quiz-info">
+            <span id="quizStatus">Question 1 of 8</span>
+            <strong id="quizResult">Score: 0</strong>
+          </div>
+
+          <div id="quizCard" class="quiz-question"></div>
+          <div id="quizExplanation" class="quiz-explanation"></div>
+          <div class="quiz-controls">
+            <button onclick="prevQuestion()" id="prevBtn">Previous</button>
+            <button onclick="nextQuestion()" id="nextBtn">Next</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="graph" class="page">
+        <div class="card graph-card">
+          <h2>📊 Savings Graph</h2>
+          <p>See your weekly progress with a bar graph. Manage your money according to how much you save, budget and spend.</p>
+          <div class="chart" id="chart"></div>
+          <div class="graph-labels" id="graphLabels"></div>
+          <div class="chart-inputs" id="chartInputs"></div>
+          <div class="graph-actions">
+            <button class="active" data-chart="saving" onclick="updateChart('saving', this)">Saving</button>
+            <button data-chart="spending" onclick="updateChart('spending', this)">Spending</button>
+            <button data-chart="budget" onclick="updateChart('budget', this)">Budget</button>
+          </div>
+          <div class="card" id="chartInfo">
+            <h2 id="chartTitle">Saving Trend</h2>
+            <p id="chartDetail">This week your savings are strongest on Monday and drop by Thursday. Keep building habits to stay consistent.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>💡 Insight</h2>
+          <p>Good habits help you manage money better. Use these charts to see patterns and set goals.</p>
+        </div>
+      </section>
+
+      <section id="info" class="page">
+        <div class="card">
+          <h2>What affects your credit score?</h2>
+          <p>Payment history is the main factor. Paying bills on time shows you are reliable and helps your score rise.</p>
+        </div>
+        <div class="card">
+          <h2>What does diversification mean?</h2>
+          <p>It means spreading your investments across different types of assets, so one loss does not hurt your whole plan.</p>
+        </div>
+        <div class="card">
+          <h2>What is inflation?</h2>
+          <p>Inflation means prices rise over time. Your money buys less if income does not keep up with that increase.</p>
+        </div>
+        <div class="card">
+          <h2>Gross income versus net income</h2>
+          <p>Gross income is your total earnings before taxes and deductions. Net income is what is left in your account after those costs.</p>
+        </div>
+        <div class="card">
+          <h2>What is APR?</h2>
+          <p>APR is the annual cost of borrowing money. It includes both interest and fees for a loan or credit card.</p>
+        </div>
+        <div class="card">
+          <h2>Why keep an emergency fund?</h2>
+          <p>An emergency fund covers unexpected bills or sudden changes, so you do not need to borrow money at high cost.</p>
+        </div>
+        <div class="card">
+          <h2>What is a stock?</h2>
+          <p>A stock is a share of ownership in a company. Its value can rise or fall depending on how that company performs.</p>
+        </div>
+        <div class="card">
+          <h2>How is a debit card different from credit?</h2>
+          <p>A debit card uses money you already have in your account. A credit card borrows money that you must pay back later.</p>
+        </div>
+      </section>
     </div>
-
-    <div class="sites-grid">
-      <a href="MoneyGame_Krisha/index.html" class="site-card">
-        <div class="emoji">🎮</div>
-        <h3>Money Game</h3>
-        <p>Level up your money skills with XP, challenges, savings streaks, and UAE-themed quests. Turn budgeting into a game.</p>
-        <span class="card-cta">Start Playing →</span>
-      </a>
-
-      <a href="BudgetTools_Vihaan/index.html" class="site-card">
-        <div class="emoji">💰</div>
-        <h3>Budget Tools</h3>
-        <p>Track spending, set up to 5 savings goals, and visualize where your cash goes with live pie charts and planners.</p>
-        <span class="card-cta">Open Planner →</span>
-      </a>
-
-      <a href="Learn&Quiz_Mauryan/index.html" class="site-card">
-        <div class="emoji">📚</div>
-        <h3>Learn & Quiz</h3>
-        <p>Test your money IQ with interactive quizzes, explore savings graphs, and learn key financial concepts.</p>
-        <span class="card-cta">Take the Quiz →</span>
-      </a>
-
-      <a href="BudgetingGuide_Andrija/budgeting.html" class="site-card">
-        <div class="emoji">📝</div>
-        <h3>Budgeting Guide</h3>
-        <p>Master the 50/30/20 and 70/10/10/10 rules with AI-powered feedback. Learn how adults split their money.</p>
-        <span class="card-cta">Learn Budgeting →</span>
-      </a>
-    </div>
-  </main>
+  </div>
 
   <footer class="dw-footer">
     <div class="dw-footer-content">
-      <a href="index.html" class="logo" style="justify-content: center;">
+      <a href="../index.html" class="logo" style="justify-content: center;">
         <div class="logo-icon">د</div>
         <div class="logo-text">dirham<span>wise</span></div>
       </a>
       <p>© 2025 DirhamWise · Financial confidence for UAE teens</p>
-      <p style="font-size: 0.85rem; margin-top: 0.5rem;">🔒 Your data stays on your device · No sign-up needed</p>
     </div>
   </footer>
+
+  <script>
+    const quizQuestions = [
+      { question: 'What does compound interest mean?', options: ['Interest only on the original amount', 'Interest on the original amount and past interest', 'A fixed fee from the bank', 'A special savings account'], answer: 1, explanation: 'Compound interest means your money earns interest on both the initial amount and the interest that has already been added.' },
+      { question: 'What is the primary factor that affects your credit score?', options: ['Your age', 'Payment history', 'Favorite color', 'Shoe size'], answer: 1, explanation: 'Payment history is the most important factor in calculating your credit score.' },
+      { question: 'What is diversification in investing?', options: ['Putting all money in one stock', 'Spreading investments across different assets', 'Only buying bonds', 'Selling everything'], answer: 1, explanation: 'Diversification reduces risk by not putting all your eggs in one basket.' },
+      { question: 'Which statement best describes inflation?', options: ['It makes prices fall over time', 'It makes prices rise over time', 'It stops all price changes', 'It lowers wages automatically'], answer: 1, explanation: 'Inflation means prices tend to rise, so the same money buys less in the future.' },
+      { question: 'What is the difference between gross income and net income?', options: ['Gross is before taxes, net is after', 'Net is before taxes, gross is after', 'They are the same', 'Gross is interest, net is principal'], answer: 0, explanation: 'Gross income is your total earnings before deductions; net is what you take home.' },
+      { question: 'What does APR stand for on a loan?', options: ['Annual Percentage Rate', 'Average Payment Required', 'Automatic Payment Reduction', 'Asset Protection Ratio'], answer: 0, explanation: 'APR shows the true cost of borrowing, including fees and interest.' },
+      { question: 'Why should you have an emergency fund?', options: ['To buy luxury items', 'To cover unexpected expenses', 'To invest in stocks', 'To pay for vacations'], answer: 1, explanation: 'An emergency fund protects against financial surprises like job loss or medical bills.' },
+      { question: 'What is a stock?', options: ['A type of bond', 'Ownership in a company', 'Government debt', 'A savings account'], answer: 1, explanation: 'Stocks represent partial ownership in a company and can grow in value.' }
+    ];
+
+    const chartSets = {
+      saving: { label: 'Saving Trend', detail: 'Your savings are highest at the start of the week. Good work! Keep the same habits to stay consistent.', values: [80, 65, 74, 55, 68] },
+      spending: { label: 'Spending Trend', detail: 'Spending is lower midweek. Try keeping weekend spending steady to avoid surprises.', values: [65, 72, 58, 44, 77] },
+      budget: { label: 'Budget Plan', detail: 'This plan shows how close your spending is to the target. Aim to keep expenses under budget.', values: [70, 62, 68, 60, 72] }
+    };
+
+    const chartDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+    let currentQuestion = 0;
+    let quizScore = 0;
+    let selectedDataset = 'saving';
+    let selectedBarIndex = 0;
+    const userAnswers = Array(quizQuestions.length).fill(null);
+
+    const quizCard = document.getElementById('quizCard');
+    const quizStatus = document.getElementById('quizStatus');
+    const quizResult = document.getElementById('quizResult');
+    const quizProgressFill = document.getElementById('quizProgressFill');
+    const quizExplanation = document.getElementById('quizExplanation');
+    const chartEl = document.getElementById('chart');
+    const graphLabels = document.getElementById('graphLabels');
+    const chartInputs = document.getElementById('chartInputs');
+    const chartTitle = document.getElementById('chartTitle');
+    const chartDetail = document.getElementById('chartDetail');
+
+    const cookieName = 'dirhamwise_activePage';
+    const scoreCookie = 'dirhamwise_quizScore';
+    const questionCookie = 'dirhamwise_currentQuestion';
+
+    function readCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+      return null;
+    }
+
+    function writeCookie(name, value, days = 30) {
+      const expires = new Date(Date.now() + days * 864e5).toUTCString();
+      document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
+    }
+
+    function initPage() {
+      const savedPage = readCookie(cookieName);
+      const savedScore = readCookie(scoreCookie);
+      const savedQuestion = readCookie(questionCookie);
+      const savedChartSet = readCookie('dirhamwise_chartSet');
+      if (savedPage && document.getElementById(savedPage)) showPage(savedPage, false);
+      if (savedScore !== null && !Number.isNaN(Number(savedScore))) quizScore = Number(savedScore);
+      if (savedQuestion !== null && !Number.isNaN(Number(savedQuestion))) currentQuestion = Number(savedQuestion);
+      if (savedChartSet && chartSets[savedChartSet]) selectedDataset = savedChartSet;
+      showQuizQuestion();
+      const activeButton = document.querySelector(`.graph-actions button[data-chart="${selectedDataset}"]`);
+      if (activeButton) updateChart(selectedDataset, activeButton);
+      else { renderChart(selectedDataset); buildChartInputs(selectedDataset); }
+    }
+
+    function showPage(pageId, save = true) {
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+      const target = document.getElementById(pageId);
+      if (!target) return;
+      target.classList.add('active');
+      const activeTab = document.querySelector(`.tab[data-page="${pageId}"]`);
+      if (activeTab) activeTab.classList.add('active');
+      if (save) writeCookie(cookieName, pageId);
+      if (pageId === 'graph') { renderChart(selectedDataset, false, true); buildChartInputs(selectedDataset); }
+    }
+
+    function updateScoreDisplay() {
+      quizScore = userAnswers.reduce((sum, answer, index) => sum + (answer === quizQuestions[index].answer ? 1 : 0), 0);
+      quizResult.textContent = `Score: ${quizScore}`;
+      quizProgressFill.style.width = `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
+    }
+
+    function showQuizQuestion() {
+      const question = quizQuestions[currentQuestion];
+      quizStatus.textContent = `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+      updateScoreDisplay();
+      quizCard.innerHTML = '';
+      quizExplanation.innerHTML = '';
+      const questionTitle = document.createElement('div');
+      questionTitle.innerHTML = `<h3>${question.question}</h3>`;
+      quizCard.appendChild(questionTitle);
+      question.options.forEach((option, index) => {
+        const optionEl = document.createElement('button');
+        optionEl.className = 'quiz-option';
+        optionEl.textContent = option;
+        optionEl.onclick = () => selectQuizOption(optionEl, index);
+        if (userAnswers[currentQuestion] !== null) {
+          optionEl.disabled = true;
+          if (index === userAnswers[currentQuestion]) optionEl.classList.add(index === question.answer ? 'correct' : 'wrong');
+          if (index === question.answer && userAnswers[currentQuestion] !== question.answer) optionEl.classList.add('correct');
+        }
+        quizCard.appendChild(optionEl);
+      });
+      if (userAnswers[currentQuestion] !== null) quizExplanation.innerHTML = `<p>${question.explanation}</p>`;
+      writeCookie(questionCookie, currentQuestion);
+      writeCookie(scoreCookie, quizScore);
+    }
+
+    function selectQuizOption(button, index) {
+      const question = quizQuestions[currentQuestion];
+      userAnswers[currentQuestion] = index;
+      document.querySelectorAll('.quiz-option').forEach(btn => btn.disabled = true);
+      quizExplanation.innerHTML = `<p><strong>${index === question.answer ? '✅ Correct!' : '❌ Incorrect.'}</strong> ${question.explanation}</p>`;
+      updateScoreDisplay();
+      writeCookie(scoreCookie, quizScore);
+      writeCookie(questionCookie, currentQuestion);
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < quizQuestions.length - 1) { currentQuestion += 1; showQuizQuestion(); }
+      else alert('You have reached the end of the quiz. Use previous to review or reset your progress.');
+    }
+
+    function restartQuiz() {
+      if (confirm('Restart the quiz and clear your current answers?')) {
+        currentQuestion = 0; quizScore = 0; userAnswers.fill(null);
+        updateScoreDisplay(); showQuizQuestion();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQuestion > 0) { currentQuestion -= 1; showQuizQuestion(); }
+    }
+
+    function updateChart(setName, button) {
+      selectedDataset = setName;
+      document.querySelectorAll('.graph-actions button').forEach(btn => btn.classList.remove('active'));
+      if (button) button.classList.add('active');
+      renderChart(setName);
+      buildChartInputs(setName);
+    }
+
+    function buildChartInputs(setName) {
+      const data = chartSets[setName];
+      chartInputs.innerHTML = '';
+      data.values.forEach((value, index) => {
+        const inputWrapper = document.createElement('div');
+        inputWrapper.className = 'chart-input';
+        inputWrapper.innerHTML = `<label>${chartDays[index]}<input type="number" min="0" max="100" step="1" value="${value}" /></label>`;
+        const input = inputWrapper.querySelector('input');
+        input.addEventListener('input', () => {
+          let nextValue = Number(input.value);
+          if (Number.isNaN(nextValue)) nextValue = 0;
+          nextValue = Math.max(0, Math.min(100, nextValue));
+          input.value = nextValue;
+          chartSets[setName].values[index] = nextValue;
+          selectedBarIndex = -1;
+          chartDetail.textContent = `Custom values applied to ${chartSets[setName].label}. Tap a bar for detail.`;
+          renderChart(setName, true);
+        });
+        chartInputs.appendChild(inputWrapper);
+      });
+    }
+
+    function renderChart(setName, keepDetail = false, animate = false) {
+      const data = chartSets[setName];
+      chartTitle.textContent = data.label;
+      if (!keepDetail) chartDetail.textContent = data.detail;
+      chartEl.innerHTML = '';
+      graphLabels.innerHTML = '';
+      data.values.forEach((value, index) => {
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        bar.style.height = `${Math.max(5, value)}%`;
+        bar.innerHTML = `<span>${index + 1} • ${value}%</span>`;
+        if (animate) bar.classList.add('animate');
+        chartEl.appendChild(bar);
+        const label = document.createElement('div');
+        label.textContent = chartDays[index];
+        graphLabels.appendChild(label);
+      });
+      if (animate) setTimeout(() => document.querySelectorAll('.bar.animate').forEach(bar => bar.classList.remove('animate')), 450);
+      writeCookie('dirhamwise_chartSet', setName);
+    }
+
+    initPage();
+  </script>
 </body>
 </html>
