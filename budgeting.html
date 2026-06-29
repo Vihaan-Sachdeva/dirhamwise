@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DirhamWise · Budgeting Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../dirhamwise-theme.css">
+    <link rel="stylesheet" href="budgeting.css">
+</head>
+<body class="dw-page-bg">
+    <header class="dw-header">
+        <nav class="dw-nav">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon">د</div>
+                <div class="logo-text">dirham<span>wise</span></div>
+            </a>
+            <ul class="dw-nav-links">
+                <li><a href="../index.html">🏠 Hub</a></li>
+                <li><a href="budgeting.html" class="active">📝 Budgeting</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-main">
+        <a href="../index.html" class="back-btn">← Back to Hub</a>
+
+        <div class="page-hero">
+            <h2>📝 Budgeting</h2>
+        </div>
+
+        <div class="text-block">
+            <p>Your parents may have told you about how they need to pay bills and buy groceries and pay for other things, right? That's called Budgeting. Its when you split up your money over a period of time to cover your expenses. Adults, who most likely get pay cheques, use that as their baseline for budgeting. In this section of DirhamWise, there is a golden rule that is mostly followed, that being the 50 30 20 rule. This basically means 50% income towards needs (mortgage and/or rent, insurance, groceries, bills etc.), 30% towards wants (entertainment and sports for example) and 20% into saving. Other methods such as the 70 10 10 10 rule (70% needs, 10% wants, 10% sharing, and 10% saving) also exist (this one gives more money to immediate needs).</p>
+        </div>
+
+        <div class="quiz-box">
+            <h3>50 30 20 vs 70 10 10 10</h3>
+            <p class="quiz-sub">Which income range would be best suited for each and why?</p>
+            <p class="quiz-sub">Type your answer below and AI will evaluate it:</p>
+            <textarea id="userAnswer" placeholder="Type here..."></textarea>
+            <button id="submitBtn" onclick="submitAnswer()">Submit ↵</button>
+        </div>
+
+        <div class="response-box" id="responseBox" style="display:none;">
+            <div class="response-header">
+                <span>🤖 AI Evaluation</span>
+                <button class="close-btn" onclick="closeResponse()">✕</button>
+            </div>
+            <div id="responseText" class="response-text">Thinking...</div>
+        </div>
+    </main>
+
+    <footer class="dw-footer">
+        <div class="dw-footer-content">
+            <a href="../index.html" class="logo" style="justify-content: center;">
+                <div class="logo-icon">د</div>
+                <div class="logo-text">dirham<span>wise</span></div>
+            </a>
+            <p>© 2025 DirhamWise · Financial confidence for UAE teens</p>
+        </div>
+    </footer>
+
+   <script>
+    const GEMINI_KEY = 'AIzaSyBZJiVu3QpWGuTWDzM_gp3jrCO7aAPpLsA';
+
+    async function submitAnswer() {
+        const answer = document.getElementById('userAnswer').value.trim();
+        if (!answer) return;
+
+        const responseBox = document.getElementById('responseBox');
+        const responseText = document.getElementById('responseText');
+
+        responseBox.style.display = 'block';
+        responseText.innerText = 'Thinking...';
+
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.innerText = 'Evaluating...';
+
+        try {
+            const response = await fetch(
+                `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`,
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: `You are a friendly and encouraging financial literacy teacher evaluating a Year 9 student's answer (around 14-15 years old). The question was: "Which income range would be best suited for the 50 30 20 rule vs the 70 10 10 10 rule, and why?" Evaluate their answer in 3-4 sentences. Be encouraging, point out what they got right, and gently correct anything wrong. Keep it simple and easy to understand for a teenager. Here is the student's answer: ${answer}`
+                            }]
+                        }]
+                    })
+                }
+            );
+
+            const data = await response.json();
+            responseText.innerText = data.candidates[0].content.parts[0].text;
+        } catch (error) {
+            responseText.innerText = 'Sorry, something went wrong. Please try again!';
+        }
+
+        btn.disabled = false;
+        btn.innerText = 'Submit ↵';
+    }
+
+    document.getElementById('userAnswer').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            submitAnswer();
+        }
+    });
+
+    function closeResponse() {
+        document.getElementById('responseBox').style.display = 'none';
+    }
+</script>
+</body>
+</html>
